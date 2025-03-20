@@ -3,17 +3,23 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
+    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg" width="150">
     </picture>
   </a>
 </p>
 
 <h1 align="center">
-  Medusa Eats - Food Delivery Platform Demo
+  Medusa Eats - Food Delivery Platform
 </h1>
 
 <p align="center">
 An Uber Eats style delivery platform running on Medusa 2.0 and Next.js 14.</p>
+
+<p align="center">
+  <a href="https://railway.app/template/QvfPwp?referralCode=-Yg50p">
+    <img src="https://railway.app/button.svg" alt="Deploy on Railway">
+  </a>
+</p>
 
 <p align="center">
   <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
@@ -27,156 +33,166 @@ An Uber Eats style delivery platform running on Medusa 2.0 and Next.js 14.</p>
   </a>
 </p>
 
-# Overview
+## Overview
 
-Medusa Eats is built with:
+Medusa Eats is a complete food delivery platform built with:
 
-- [Medusa](https://medusajs.com/)
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Typescript](https://www.typescriptlang.org/)
+- [Medusa 2.0](https://medusajs.com/) - Open-source commerce engine
+- [Next.js 14](https://nextjs.org/) - React framework for the frontend
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript
 
-Features include:
+## Features
 
-- Restaurant storefront
-- Realtime order status dashboards
-- Driver and restaurant dashboards
-- User roles
-- Authentication
-- Medusa Workflows
-- Realtime Server Sent Event
+### Platform Features
+- **Restaurant Marketplace** - Browse and order from multiple restaurants
+- **Realtime Order Tracking** - Live updates on order status for customers, restaurants, and drivers
+- **Multi-dashboard System** - Separate interfaces for customers, restaurants, and drivers
+- **User Role Management** - Different access levels and features based on role
+- **Authentication** - Secure login and account management
+- **Medusa Workflows** - Automated order processing flows
+- **Realtime Updates** - Server Sent Events for live status changes
 
-# Project structure
+### Customer-Facing Features
+- **Restaurant Browsing** - Discover restaurants with intuitive interface
+- **Menu Navigation** - Browse restaurant menus with food categories
+- **Order Management** - Add items to cart and place orders
+- **Order Tracking** - Real-time updates on order preparation and delivery status
+- **Checkout Process** - Streamlined ordering experience
+
+### Restaurant Partner Features
+- **Order Management Dashboard** - Accept and process incoming orders
+- **Order Status Updates** - Mark orders as in preparation, ready for pickup
+- **Restaurant Profile Management** - Manage restaurant information and menu
+
+### Driver Features
+- **Order Claiming** - See and claim available deliveries
+- **Delivery Management** - Track active deliveries with status updates
+- **Delivery Workflow** - Step-by-step process from pickup to delivery
+
+## Project Structure
 
 The project consists of two main directories:
 
-- `/backend` contains the Medusa 2.0 project with all the customizations.
-- `/frontend` contains the Next.js project.
+- `/backend` - Contains the Medusa 2.0 project with all the customizations
+- `/frontend` - Contains the Next.js 14 project for all user interfaces
 
-# Quickstart
+## Quickstart
 
-### Install dependencies
+### Install Dependencies
 
-Use Yarn to install dependencies in both directories.
+Use Yarn to install dependencies in both directories:
 
-In `/frontend` run:
+```bash
+# In /frontend
+yarn
 
-```shell
+# In /backend
 yarn
 ```
 
-In `/backend` run:
+### Set Up Environment Variables
 
-```shell
-yarn
-```
+Copy the template environment files:
 
-### Set up environment variables
+```bash
+# In /frontend
+cp .env.template .env
 
-The project comes with `.env.template` files to quickly set up your environment variables. Copy them to a `.env` file by running the following commands:
-
-In `/frontend` run:
-
-```shell
+# In /backend
 cp .env.template .env
 ```
 
-In `/backend` run:
+### Set Up and Seed the Database
 
-```shell
-cp .env.template .env
-```
+1. Create a Postgres database called `medusa-eats`
+2. Run the setup script:
 
-### Set up and seed the database
-
-Create a Postgres database called `medusa-eats`.
-
-The repo contains a setup script to build the project, run migrations and seed dummy data.
-
-> Make sure your local Postgres server is running.
-
-In `/backend` run:
-
-```shell
+```bash
+# In /backend
 yarn setup-db
 ```
 
-This will also create an admin user with the following credentials:
+This creates an admin user with:
+- Email: admin@email.com
+- Password: supersecret
 
-```
-email: admin@email.com
-pasword: supersecret
-```
+### Start Development Servers
 
-### Start developing
-
-You are now ready to start up your project.
-
-**Start Medusa dev server**
-
-Make sure that Redis and Postgres servers are running locally on their default ports.
-
-In `/backend` run:
-
-```shell
+**Start Medusa backend:**
+```bash
+# In /backend
 yarn dev
 ```
+The Medusa server runs on http://localhost:9000
 
-The Medusa server is now running on http://localhost:9000.
-
-**Start Next.js dev server**
-
-In a separate terminal, cd to `/frontend` and run:
-
-```shell
+**Start Next.js frontend:**
+```bash
+# In /frontend
 yarn dev
 ```
+The Next.js frontend runs on http://localhost:3000
 
-The Next.js frontend is now running on http://localhost:3000.
+### Create User Accounts
 
-### Create user accounts
+#### Create Restaurant Admin Account
+1. Go to http://localhost:3000/signup
+2. Select 'I'm a restaurant'
+3. Select your restaurant
+4. Complete the form and create account
+5. Access restaurant dashboard at http://localhost:3000/dashboard/restaurant
 
-We're gonna create a restaurant admin and driver account so we'll have access to both sides of the platform.
+#### Create Driver Account
+1. Go to http://localhost:3000/signup
+2. Select 'I'm a driver'
+3. Complete the form
+4. Access driver dashboard at http://localhost:3000/dashboard/driver
 
-**Create restaurant admin account**
+### Full Delivery Workflow Tutorial
 
-1. Go to http://localhost:3000/signup.
-2. Select 'I'm a restaurant'.
-3. Select the restaurant you want to create an admin for.
-4. Fill out the remaining form fields and click 'Create account'.
-5. You can now log in as a restaurant admin and access the restaurant dashboard at http://localhost:3000/dashboard/restaurant.
+> To experience the entire workflow, you'll need multiple browsers or incognito windows to log in as different users.
 
-**Create driver account**
+1. **Place an order:**
+   - Go to http://localhost:3000/
+   - Select a restaurant
+   - Add menu items with the + buttons
+   - Click the shopping bag icon
+   - Go to checkout and place order
+   - View the live order status dashboard
 
-1. Repeat above steps, but this time select 'I'm a driver'.
-2. You can now log in as a driver and access the driver dashboard at http://localhost:3000/dashboard/driver.
+2. **Restaurant accepts order:**
+   - Log in to restaurant dashboard at http://localhost:3000/dashboard/restaurant
+   - Accept the incoming order 
 
-### Place an order and handle a delivery
+3. **Driver claims delivery:**
+   - Log in to driver dashboard at http://localhost:3000/dashboard/driver
+   - Claim the available order
+   - Follow prompts to update delivery status
 
-> To go through the entire delivery workflow in realtime, you'll need to log into both a restaurant and a driver account. To do so, use an icognito window or second browser.
+4. **Track in realtime:**
+   - All dashboards update in realtime as the order progresses
+   - Each user can see appropriate status updates and actions
 
-1. Go to the storefront at http://localhost:3000/.
-2. Select a restaurant from the list.
-3. Add menu items to you delivery by clicking the + buttons.
-4. Click the shopping bag button on the top right.
-5. Click 'Go to checkout'.
-6. Complete the form and place you order. A live order status dashboard will show up.
-7. In a new tab, go to http://localhost:3000/dashboard/restaurant and log in as an admin for the restaurant you just placed an order at.
-8. Your order should be visible in the "Incoming orders" column. Click the button to accept the incoming order.
-9. In an incognito window, go to http://localhost:3000/dashboard/driver and log in as a driver.
-10. The accepted order will show up on your dashboard. Click the button to claim it.
-11. The order will go through the different stages on all dashboards in realtime. You can progress the order by marking each stage as complete on the relevant dashboard.
+## Deployment
 
-# Resources
+The easiest way to deploy is using Railway's one-click deployment:
 
-## Learn more about Medusa
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/QvfPwp?referralCode=-Yg50p)
 
+## Requirements
+
+- **Node.js** - v18 or newer
+- **PostgreSQL** - Running on default port
+- **Redis** - Running on default port
+
+## Resources
+
+### Learn more about Medusa
 - [Website](https://www.medusajs.com/)
 - [GitHub](https://github.com/medusajs)
 - [2.0 Documentation](https://docs.medusajs.com/v2)
 
-## Learn more about Next.js
-
+### Learn more about Next.js
 - [Website](https://nextjs.org/)
 - [GitHub](https://github.com/vercel/next.js)
 - [Documentation](https://nextjs.org/docs)
